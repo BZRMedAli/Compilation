@@ -1,0 +1,25 @@
+/*Déclaration d'attribut:
+nom : chaine
+val : entier
+copa = {PLUS, MOINS}
+copr = {INF, SUP, EGAL}
+*/
+
+// DÉCLARATION D'ATTRIBUTS:
+
+enum Codeopa {PLUS, MOINS};  //enum est un type en C qui permet de définir un ensemble de constantes nommées et le compilateur donne un code à chaque nom
+enum Codeopr {INF,SUP,EGAL};
+union {
+  char* nom;
+  int val;
+  enum Codeopa copa;
+  enum Codeopr copr;
+
+} attribut;
+
+/* Fragmentation: le cas où l'état final où le token reconnu est une constante entière */
+
+case A:
+reculer();
+attribut.val= eval(getlexem());  //eval est une fonction qui convertit une chaine de caractères en entier
+return Num;

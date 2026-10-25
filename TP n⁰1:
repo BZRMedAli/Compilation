@@ -1,0 +1,67 @@
+/* Pour la réalisation des TP on utilisera le gnu de linux Ubuntu (Terminal) :
+Dans ce TP1 on verra les étapes suivies par l'IDE (environnement de développement intégré) qui possède:
+1-Edition: Par un editeur comme gedit sous linux ubuntu
+2-Prétraitement: Par un précompilateur (préprocesseur), cpp sous linux ubuntu
+3-Compilation: Par le compilateur comme le gcc
+4-Assemblage: Par l'assembleur comme as
+5-Edition des liens: Par un editeur des liens comme ld
+
+---Puis le résultat est un exécutable
+
+expl pratique: Réaliser un petit programme c pour afficher un message et parcourir les étapes d'IDE: */
+
+mkdir G6 //Création d'un répartoire nommé G6
+cd G6 //Accéder au répartoire G6
+gedit prog.c /* Pour ouvrir l'éditeur gedit et écrire du programme C dans le fichier prog.c, le problème c'est que je ne peux pas lancer d'autres commandes en
+parralèle avec l'exécution de gedit prog.c, pour cela on utilise la commande (gedit prog.c &) pour avoir l'invite de commande et taper d'autres commandes*/
+gedit prog.c & /* dans le gedit on écrit le programme suivant:
+                #include <stdio.h>
+                int main(){
+                printf("Hello!");
+                return 0;
+                }    */
+
+// Il est possible de créer plusieurs fichiers dans gedit par la commande: gedit f1 f2 f3 ....
+
+// Pour appeler à toutes les étapes après l'edition (prétraitement, compilation, assemblage, edition des liens) on appelle la commande gcc (compilateur de c)
+gcc prog.c // cela applique toutes les étapes et le résultat par défault est un fichier exécutable nommé a.out et affiche le message Hello!
+
+ls // pour lister les fichiers du répartoire on aura a.out comme fichier qui est l'exécutable
+
+//On peut faire toutes les étapes par des commandes (tels que: cpp (Prétraitement), gcc (Compilation), as (Assemblage), ld (Édition des liens))
+
+./a.out // Chemin, il affichera Hello!
+
+// Prétraitements servent à interpréter les directives (comme #include<stdio.h> ou #define pi=3.14 qui ne sont pas du langage c) et inclure des librairies
+
+/* Il y a 2 types de librairies : 1-Standard (celle incluent par défault dans le c) (#include <......>, 
+2-Utilisateur (déclarées par les utilisateurs qui nécessitent un chemin) (#include "......") */
+
+
+cpp prog.c // Pour prétraiter le fichier prog.c qui est équivalente à la commande gcc -E prog.c
+
+/*Exemple de la création d'une bibliothèque (directive) somme.c */
+
+gedit somme.c /* À l'intérieur on écrit: 
+                int max(int x, int y){
+                return x+y;
+                }
+              */
+
+gedit prog.c /* À l'intérieur on écrit:
+              #include "somme.c"
+              #include <stdio.h>
+              int main() {
+              printf("Hello!");
+              return 0;
+              } */
+
+cpp prog.c //Pour prétraiter la nouvelle version de prog.c
+
+
+
+
+
+
+
+

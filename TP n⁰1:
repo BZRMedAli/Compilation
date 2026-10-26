@@ -24,7 +24,11 @@ gedit prog.c & /* dans le gedit on écrit le programme suivant:
 // Il est possible de créer plusieurs fichiers dans gedit par la commande: gedit f1 f2 f3 ....
 
 // Pour appeler à toutes les étapes après l'edition (prétraitement, compilation, assemblage, edition des liens) on appelle la commande gcc (compilateur de c)
-gcc prog.c // cela applique toutes les étapes et le résultat par défault est un fichier exécutable nommé a.out et affiche le message Hello!
+gcc prog.c /* cela applique toutes les étapes et le résultat par défault est un fichier exécutable nommé a.out 
+            et affiche le message Hello! */
+
+gcc -o prog.exe prog.c /*Cette commande produira un fichier exécutable prog.exe au lieu a.out équivalente à la 
+                      commande gcc prog.c -o prog.exe*/
 
 ls // pour lister les fichiers du répartoire on aura a.out comme fichier qui est l'exécutable
 

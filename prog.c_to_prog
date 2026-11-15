@@ -1,3 +1,34 @@
-$gedit prog.c &
------------------------ 
-  #include <stdio.h<
+$ gedit prog.c &    // Text editor 
+-----------------------   For prog.c program's body
+#include <stdio.h>
+#ifdef ANG 
+void salut(){
+printf("Hello \n");
+}
+#else
+void salut (){
+printf("Salut \n");
+}
+#endif
+int main (){
+salut ();
+return 0;
+}
+
+------------------------
+$ gcc -E prog.c -o prog.i  or $ cpp prog.c -o prog.i// For preprocessing stage 
+$ ls // we will have prog.c and prog.i
+$ gcc -S prog.i -o prog.s  // TO stop after compilation and result an assembler program
+$ ls  // prog.c prog.i prog.s
+$ gcc -c prog.s -o prog.o  // The assembly of prog.s results prog.o
+$ ls  //prog.c prog.i prog.s prog.o
+$ gcc prog.o -o prog  // The last step which is the link edition of prog.o to have the machine binary code of the program needed
+$ ls  // prog.c prog.i prog.s prog.o prog
+
+In this program we will have Salut in the screen because ANG is not defined
+In order to define the macro ANG we use :
+1- #define ANG : In the source file before #ifdef ANG 
+2- gcc -DANG prog.c -o prog : On the command line ($ gcc -DANG prog.c -o prog)
+
+After applying one option we should :
+./prog  // we will have Hello displayed, because this time the macro ANG is defined 

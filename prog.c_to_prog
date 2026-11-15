@@ -1,0 +1,3 @@
+$gedit prog.c &
+----------------------- 
+  #include <stdio.h<
